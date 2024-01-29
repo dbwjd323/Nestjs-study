@@ -5,9 +5,8 @@ import { ConfigService } from '@nestjs/config'; //ConfigService 임포트
 export class AppController {
   constructor(private configService: ConfigService) {} //ConfigService 주입
 
-  @Get()
-  getHello(): string {
-    const message = this.configService.get('MESSAGE'); //configService.get() 호출
-    return message;
+  @Get('service-url') //http://localhost:3000/service-url의 경로 진입 시 실행
+  getServiceUrl(): string{
+    return this.configService.get('SERVICE_URL'); //SERVICE_URL 환경 변수 반환
   }
 }
