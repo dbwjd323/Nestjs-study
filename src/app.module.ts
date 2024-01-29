@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
-  imports: [ConfigModule.forRoot()], //ConfigModule 설정
+  imports: [ConfigModule.forRoot({isGlobal: true}), WeatherModule], //ConfigModule 설정
   controllers: [AppController],
   providers: [AppService],
 })
